@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Email Template</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+            }
+    
+            .container {
+                max-width: 600px;
+                width: 100%; 
+                margin: auto;
+                background: #ffffff;
+                padding: 20px;
+                border-radius: 8px;
+            }
+    
+            .header {
+                text-align: center;
+                padding: 10px 0;
+            }
+            .header img {
+                max-width: 250px;
+                width: 100%; 
+                height: auto;
+            }
+    
+            /* Titles */
+            .title {
+                font-size: 36px;
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            .subtitle {
+                text-align: center;
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 15px;
+            }
+    
+            /* Content */
+            .content {
+                font-size: 14px;
+                line-height: 1.6;
+                color: #333;
+                padding: 10px 0;
+            }
+            .match-stats {
+                font-weight: bold;
+                text-align: center;
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
+    
+            /* Match Reports */
+            .match-report {
+                background: #f9f9f9;
+                padding: 10px;
+                margin: 10px 0;
+                border-radius: 5px;
+            }
+    
+            /* Responsive Report Entry */
+            .report-entry {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 8px;
+                border-bottom: 1px solid #ddd;
+            }
+            .report-entry:last-child {
+                border-bottom: none;
+            }
+    
+            @media screen and (max-width: 600px) {
+                .container {
+                    padding: 10px; 
+                }
+                
+                .title {
+                    font-size: 20px; 
+                }
+                
+                .subtitle {
+                    font-size: 16px;
+                }
+    
+                .content {
+                    font-size: 14px;
+                    padding: 5px;
+                }
+    
+                .header img {
+                    max-width: 60px;
+                }
+    
+                .match-report {
+                    padding: 5px; 
+                }
+    
+                .report-entry {
+                    display: block;
+                    text-align: center;
+                    padding: 10px 0;
+                }
+    
+                .ranking {
+                    font-size: 16px;
+                }
+    
+                .footer {
+                    font-size: 12px;
+                    padding: 10px;
+                }
+            }
+        </style>
+    </head>
+    
+<body>
+
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="15" style="background-color: #00274C; text-align: center;">
+        <tr>
+            <td style="color: white; font-size: 16px; font-weight: bold;">
+                BSA | Tennis Consulting
+            </td>
+        </tr>
+    </table>
+
+    <div class="container">
+        <!-- Header -->
+
+        <div class="title">Scouting Report</div>
+
+        <div class="header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/California_Golden_Bears_logo.svg/252px-California_Golden_Bears_logo.svg.png" alt="University of California, Berkeley Logo">
+        </div>
+
+        <!-- Title -->
+        <div class="subtitle">University of California, Berkeley</div>
+
+
+        <!-- Date & Location -->
+<!-- Date & Location -->
+<table role="presentation" width="100%" cellspacing="0" cellpadding="10" style="text-align: center;">
+    <tr>
+        <td style="font-size: 16px;">
+            📍 Los Angeles Tennis Court
+        </td>
+        <td style="font-size: 16px;">
+            ⏰ February 1st, 2025 1:00 PM
+        </td>
+    </tr>
+</table>
+
+<!-- Horizontal Divider -->
+<hr style="border: 1px solid #ddd; width: 100%; margin: 10px 0;">
+
+<!-- Rankings & Records -->
+<table role="presentation" width="100%" cellspacing="0" cellpadding="15" style="border-collapse: collapse; text-align: center;">
+    <tr>
+        <td style="font-size: 24px; ">Ranking</td>
+        <td style="font-size: 24px; ">Conference</td>
+        <td style="font-size: 24px; ;">Overall</td>
+    </tr>
+
+    <tr>
+        <td>
+            <div style="background-color: #00274C; color: white; font-size: 35px; font-weight: bold; 
+                        display: flex; align-items: center; justify-content: center;
+                        border-radius: 50%; width: 120px; height: 120px; margin: auto;">
+                #1
+            </div>
+        </td>
+
+        <td>
+            <div style="background-color: #FFC72C; color: black; font-size: 35px; font-weight: bold; 
+                        display: flex; align-items: center; justify-content: center;
+                        border-radius: 50%; width: 120px; height: 120px; margin: auto;">
+                0-0
+            </div>
+        </td>
+
+        <td>
+            <div style="background-color: #00274C; color: white; font-size: 35px; font-weight: bold; 
+                        display: flex; align-items: center; justify-content: center;
+                        border-radius: 50%; width: 120px; height: 120px; margin: auto;">
+                0-0
+            </div>
+        </td>
+    </tr>
+
+</table>
+
+
+
+<!-- Horizontal Divider -->
+<hr style="border: 1px solid #ddd; width: 100%; margin: 10px 0;">
+        
+        <!-- Greeting -->
+        <div class="content">
+            <p>Hi Coaches and Players,</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+        </div>
+
+<!-- Reports -->
+<div class="match-report" style="background: #ffffff; padding: 0px; margin: 0; border-radius: 8px; width: 100%;">
+    <h3 style="text-align: left; padding-left: 10px; margin-top: 0;">Reports</h3>
+
+    <!-- Player Rows -->
+    <div style="width: 100%;">
+
+        <!-- Player 1 -->
+        <div style="display: flex; align-items: center; padding: 10px 0; background: #ffffff;">
+            <!-- Player Info -->
+            <div style="display: flex; align-items: center; width: 50%;">
+                <img src="http://images.sidearmdev.com/convert?url=https%3a%2f%2fdxbhsrqyrr690.cloudfront.net%2fsidearm.nextgen.sites%2fucirvine.sidearmsports.com%2fimages%2f2024%2f11%2f13%2fNoah_Zamora.JPG&type=webp" alt="Player Image" width="140" height="160" 
+                     style="border-radius: 50%; margin-right: 10px; background: #ccc;">
+                <div style="margin-left: 25px;">
+                    <strong>
+                        <a href="https://ucirvinesports.com/sports/mens-tennis/roster/noah-zamora/7146" 
+                        style="color: #0057B7; text-decoration: none;"
+                        target="_blank" rel="noopener noreferrer">
+                        Noah Zamora
+                     </a>
+                 </strong>
+                 <span style="font-size: 14px; color: #555; margin-top: 10px; display: inline-block;">Overall: 0-0</span>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div style="width: 1px; height: 40px; background-color: #ddd; margin: 0 15px;"></div>
+
+           <!-- Division Rankings -->
+        <div style="display: flex; align-items: center; width: 45%; background: #ffffff; justify-content: center; gap: 25px;">
+
+            <!-- ITA Logo + Ranking -->
+            <div style="display: flex; align-items: center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/ITA_New_Logo.png/1200px-ITA_New_Logo.png" 
+                    alt="ITA Logo" width="80">
+                <span style="font-weight: bold; margin-left: 15px;">#00</span>
+            </div>
+
+            <!-- UTR Logo + Score -->
+            <div style="display: flex; align-items: center;">
+                <img src="https://images.squarespace-cdn.com/content/v1/56f58d2a0bb4eb7999c7ed68/1615306671416-AFY9061Y9K8LKIIMGA7C/utr%2Bsymbol.png" 
+                    alt="Score Icon" width="60">
+                <span style="font-weight: bold; margin-left: 15px;">14.00</span>
+            </div>
+
+            </div>
+        </div>
+        <!-- Player 2 -->
+        <div style="display: flex; align-items: center; padding: 10px 0; background: #ffffff;">
+            <!-- Player Info -->
+            <div style="display: flex; align-items: center; width: 50%;">
+                <img src="http://images.sidearmdev.com/convert?url=https%3a%2f%2fdxbhsrqyrr690.cloudfront.net%2fsidearm.nextgen.sites%2fucirvine.sidearmsports.com%2fimages%2f2024%2f11%2f13%2fNoah_Zamora.JPG&type=webp" alt="Player Image" width="140" height="160" 
+                     style="border-radius: 50%; margin-right: 10px; background: #ccc;">
+                <div style="margin-left: 25px;">
+                    <strong>
+                        <a href="https://ucirvinesports.com/sports/mens-tennis/roster/noah-zamora/7146" 
+                        style="color: #0057B7; text-decoration: none;"
+                        target="_blank" rel="noopener noreferrer">
+                        Noah Zamora
+                     </a>
+                 </strong>
+                 <span style="font-size: 14px; color: #555; margin-top: 10px; display: inline-block;">Overall: 0-0</span>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div style="width: 1px; height: 40px; background-color: #ddd; margin: 0 15px;"></div>
+
+           <!-- Division Rankings -->
+        <div style="display: flex; align-items: center; width: 45%; background: #ffffff; justify-content: center; gap: 25px;">
+
+            <!-- ITA Logo + Ranking -->
+            <div style="display: flex; align-items: center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/ITA_New_Logo.png/1200px-ITA_New_Logo.png" 
+                    alt="ITA Logo" width="80">
+                <span style="font-weight: bold; margin-left: 15px;">#00</span>
+            </div>
+
+            <!-- UTR Logo + Score -->
+            <div style="display: flex; align-items: center;">
+                <img src="https://images.squarespace-cdn.com/content/v1/56f58d2a0bb4eb7999c7ed68/1615306671416-AFY9061Y9K8LKIIMGA7C/utr%2Bsymbol.png" 
+                    alt="Score Icon" width="60">
+                <span style="font-weight: bold; margin-left: 15px;">14.00</span>
+            </div>
+
+            </div>
+        </div>
+       
+
+        <!-- Player 3 -->
+        <div style="display: flex; align-items: center; padding: 10px 0; background: #ffffff;">
+            <!-- Player Info -->
+            <div style="display: flex; align-items: center; width: 50%;">
+                <img src="http://images.sidearmdev.com/convert?url=https%3a%2f%2fdxbhsrqyrr690.cloudfront.net%2fsidearm.nextgen.sites%2fucirvine.sidearmsports.com%2fimages%2f2024%2f11%2f13%2fNoah_Zamora.JPG&type=webp" alt="Player Image" width="140" height="160" 
+                     style="border-radius: 50%; margin-right: 10px; background: #ccc;">
+                <div style="margin-left: 25px;">
+                    <strong>
+                        <a href="https://ucirvinesports.com/sports/mens-tennis/roster/noah-zamora/7146" 
+                        style="color: #0057B7; text-decoration: none;"
+                        target="_blank" rel="noopener noreferrer">
+                        Noah Zamora
+                     </a>
+                 </strong>
+                 <span style="font-size: 14px; color: #555; margin-top: 10px; display: inline-block;">Overall: 0-0</span>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div style="width: 1px; height: 40px; background-color: #ddd; margin: 0 15px;"></div>
+
+           <!-- Division Rankings -->
+        <div style="display: flex; align-items: center; width: 45%; background: #ffffff; justify-content: center; gap: 25px;">
+
+            <!-- ITA Logo + Ranking -->
+            <div style="display: flex; align-items: center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/ITA_New_Logo.png/1200px-ITA_New_Logo.png" 
+                    alt="ITA Logo" width="80">
+                <span style="font-weight: bold; margin-left: 15px;">#00</span>
+            </div>
+
+            <!-- UTR Logo + Score -->
+            <div style="display: flex; align-items: center;">
+                <img src="https://images.squarespace-cdn.com/content/v1/56f58d2a0bb4eb7999c7ed68/1615306671416-AFY9061Y9K8LKIIMGA7C/utr%2Bsymbol.png" 
+                    alt="Score Icon" width="60">
+                <span style="font-weight: bold; margin-left: 15px;">14.00</span>
+            </div>
+
+            </div>
+        </div>
+        
+
+        <!-- Player 4 -->
+        <div style="display: flex; align-items: center; padding: 10px 0; background: #ffffff;">
+            <!-- Player Info -->
+            <div style="display: flex; align-items: center; width: 50%;">
+                <img src="http://images.sidearmdev.com/convert?url=https%3a%2f%2fdxbhsrqyrr690.cloudfront.net%2fsidearm.nextgen.sites%2fucirvine.sidearmsports.com%2fimages%2f2024%2f11%2f13%2fNoah_Zamora.JPG&type=webp" alt="Player Image" width="140" height="160" 
+                     style="border-radius: 50%; margin-right: 10px; background: #ccc;">
+                <div style="margin-left: 25px;">
+                    <strong>
+                        <a href="https://ucirvinesports.com/sports/mens-tennis/roster/noah-zamora/7146" 
+                        style="color: #0057B7; text-decoration: none;"
+                        target="_blank" rel="noopener noreferrer">
+                        Noah Zamora
+                     </a>
+                 </strong>
+                 <span style="font-size: 14px; color: #555; margin-top: 10px; display: inline-block;">Overall: 0-0</span>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div style="width: 1px; height: 40px; background-color: #ddd; margin: 0 15px;"></div>
+
+           <!-- Division Rankings -->
+        <div style="display: flex; align-items: center; width: 45%; background: #ffffff; justify-content: center; gap: 25px;">
+
+            <!-- ITA Logo + Ranking -->
+            <div style="display: flex; align-items: center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/ITA_New_Logo.png/1200px-ITA_New_Logo.png" 
+                    alt="ITA Logo" width="80">
+                <span style="font-weight: bold; margin-left: 15px;">#00</span>
+            </div>
+
+            <!-- UTR Logo + Score -->
+            <div style="display: flex; align-items: center;">
+                <img src="https://images.squarespace-cdn.com/content/v1/56f58d2a0bb4eb7999c7ed68/1615306671416-AFY9061Y9K8LKIIMGA7C/utr%2Bsymbol.png" 
+                    alt="Score Icon" width="60">
+                <span style="font-weight: bold; margin-left: 15px;">14.00</span>
+            </div>
+
+            </div>
+        </div>
+   
+
+        <!-- Player 5 -->
+        <div style="display: flex; align-items: center; padding: 10px 0; background: #ffffff;">
+            <!-- Player Info -->
+            <div style="display: flex; align-items: center; width: 50%;">
+                <img src="http://images.sidearmdev.com/convert?url=https%3a%2f%2fdxbhsrqyrr690.cloudfront.net%2fsidearm.nextgen.sites%2fucirvine.sidearmsports.com%2fimages%2f2024%2f11%2f13%2fNoah_Zamora.JPG&type=webp" alt="Player Image" width="140" height="160" 
+                     style="border-radius: 50%; margin-right: 10px; background: #ccc;">
+                <div style="margin-left: 25px;">
+                    <strong>
+                        <a href="https://ucirvinesports.com/sports/mens-tennis/roster/noah-zamora/7146" 
+                        style="color: #0057B7; text-decoration: none;"
+                        target="_blank" rel="noopener noreferrer">
+                        Noah Zamora
+                     </a>
+                 </strong>
+                 <span style="font-size: 14px; color: #555; margin-top: 10px; display: inline-block;">Overall: 0-0</span>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div style="width: 1px; height: 40px; background-color: #ddd; margin: 0 15px;"></div>
+
+           <!-- Division Rankings -->
+        <div style="display: flex; align-items: center; width: 45%; background: #ffffff; justify-content: center; gap: 25px;">
+
+            <!-- ITA Logo + Ranking -->
+            <div style="display: flex; align-items: center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/ITA_New_Logo.png/1200px-ITA_New_Logo.png" 
+                    alt="ITA Logo" width="80">
+                <span style="font-weight: bold; margin-left: 15px;">#00</span>
+            </div>
+
+            <!-- UTR Logo + Score -->
+            <div style="display: flex; align-items: center;">
+                <img src="https://images.squarespace-cdn.com/content/v1/56f58d2a0bb4eb7999c7ed68/1615306671416-AFY9061Y9K8LKIIMGA7C/utr%2Bsymbol.png" 
+                    alt="Score Icon" width="60">
+                <span style="font-weight: bold; margin-left: 15px;">14.00</span>
+            </div>
+
+            </div>
+        </div>
+   
+    </div>
+
+</div>
+
+
+
+
+        
+        <!-- Recent Dual-Matches -->
+        <div class="match-report">
+            <h3>Recent Dual-Matches</h3>
+            <div class="report-entry">
+                <span>0/00/00</span>
+                <span>Stanford Ranked #0</span>
+                <span>Overall: 0-0 <a href="#">View Results</a></span>
+            </div>
+            <div class="report-entry">
+                <span>0/00/00</span>
+                <span>Stanford Ranked #0</span>
+                <span>Overall: 0-0 <a href="#">View Results</a></span>
+            </div>
+            <div class="report-entry">
+                <span>0/00/00</span>
+                <span>Stanford Ranked #0</span>
+                <span>Overall: 0-0 <a href="#">View Results</a></span>
+            </div>
+        </div>
+
+       
+
+        <!-- Rankings and Records -->
+        <div class="ranking">Ranking: #1</div>
+        <div class="record">Conference Record: 0-0</div>
+        <div class="record">Overall Record: 0-0</div>
+
+        <!-- Signature -->
+        <div class="footer">
+            <p>Best,</p>
+            <p><strong>Clajerson Gimena</strong></p>
+            <p>Data Science & Statistics</p>
+            <p>BSA | Tennis Consulting</p>
+            <p>Los Angeles Tennis Court</p>
+        </div>
+    </div>
+</body>
+</html>
