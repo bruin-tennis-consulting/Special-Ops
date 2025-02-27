@@ -1,0 +1,150 @@
+---
+title: "Tennis App"
+output: html_document
+date: "2025-02-04"
+---
+
+```{r}
+
+install.packages("leaflet")
+library(leaflet)
+
+```
+
+```{r}
+
+library(leaflet)
+
+my_map<- leaflet()
+my_map <- addTiles(my_map)
+my_map <- setView(my_map, lng = -98.35, lat = 39.5, zoom = 4)
+
+
+##UCLA
+
+UCLA_logo <- makeIcon(iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/UCLA_Bruins_logo.svg/2560px-UCLA_Bruins_logo.svg.png", iconWidth = 40, iconHeight = 35)
+
+UCLA_popup <- paste0(
+  "<b>Los Angeles Tennis Center - Westwood, CA</b><br>",
+  "<img src='https://images.sidearmdev.com/resize?url=https%3A%2F%2Fdxbhsrqyrr690.cloudfront.net%2Fsidearm.nextgen.sites%2Fuclabruins.com%2Fimages%2F2019%2F1%2F10%2Fimage2Cropped.jpg&height=300&type=webp' width='400' height='267'><br>",
+  "<p style='text-align:center; font-size:14px; color:#333;'><i>Home of the UCLA Bruins</i></p>", "<br>", "<p style='text-align:left; font-size:20px; color:#2774AE; font-style:normal;'<b>Travel Information</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Time Zone: Pacific Standard Time (+0)</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Distance: -</p>" 
+)
+
+
+my_map <- addMarkers(my_map, lng = -118.448319, lat = 34.069825, icon = UCLA_logo, popup = UCLA_popup, popupOptions = popupOptions(maxWidth = 400))
+
+
+
+
+
+##USC
+
+USC_logo <- makeIcon(iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/USC_Trojans_logo.svg/1200px-USC_Trojans_logo.svg.png", iconWidth = 25, iconHeight = 37)
+
+USC_popup <- paste0(
+  "<b>David X. Marks Tennis Center - Los Angeles, CA</b><br>",
+  "<img src='https://www.dlrgroup.com/media/2022/05/75_13223_10_N11_weblg-aspect-ratio-820-615-1-1536x1152.jpg' width='400' height='267'><br>",
+  "<p style='text-align:center; font-size:14px; color:#333;'><i>Home of the USC Trojans</i></p>", "<br>", "<p style='text-align:left; font-size:20px; color:#990000; font-style:normal;'>Travel Information</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Time Zone: Pacific Standard Time (+0)</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Distance: 13 miles</p>"
+)
+
+my_map <- addMarkers(my_map, lng = -118.286, lat = 34.021, icon = USC_logo, popup = USC_popup, popupOptions = popupOptions(maxWidth = 400))
+
+
+
+
+##Illinois
+
+Illinois_logo <- makeIcon(iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Illinois_Fighting_Illini_logo.svg/1420px-Illinois_Fighting_Illini_logo.svg.png", iconWidth = 20, iconHeight = 30)
+
+Illinois_popup <- paste0(
+  "<b>Atkins Tennis Center - Urbana, IL</b><br>",
+  "<img src='https://fightingillini.com/images/2020/8/22/ATH1920_Facilities_0011s_0005_tennisfacilities.jpg' width='400' height='267'><br>",
+  "<p style='text-align:center; font-size:14px; color:#333;'><i>Home of the Illinois Fighting Illini</i></p>", "<br>", "<p style='text-align:left; font-size:20px; color:#E84A27; font-style:normal;'>Travel Information</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Time Zone: Central Standard Time (PST +2)</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Distance: 1,750 miles</p>"
+)
+
+my_map <- addMarkers(my_map, lng = -88.22783, lat = 40.09586, icon = Illinois_logo, popup = Illinois_popup, popupOptions = popupOptions(maxWidth = 400))
+
+
+
+#Northwestern
+
+NW_logo <- makeIcon(iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Northwestern_Wildcats_logo.svg/1330px-Northwestern_Wildcats_logo.svg.png", iconWidth = 20, iconHeight = 30)
+
+NW_popup <- paste0(
+  "<b>Combe Tennis Center - Evanston, IL</b><br>",
+  "<img src='https://scontent-lax3-2.xx.fbcdn.net/v/t1.6435-9/83857469_2719067341540972_3874354706251776000_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=xydLOfm0UEcQ7kNvgGkFvN_&_nc_zt=23&_nc_ht=scontent-lax3-2.xx&_nc_gid=ApwUwb_6smrvft7cFsa_o0N&oh=00_AYDZH_hMyLbob_BrjP6f1kUL00TSkKrwsA9RCRoZzZYluA&oe=67C920E6' width='400' height='267'><br>",
+  "<p style='text-align:center; font-size:14px; color:#333;'><i>Home of the Northwestern Wildcats</i></p>", "<br>", "<p style='text-align:left; font-size:20px; color:#4E2A84; font-style:normal;'>Travel Information</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Time Zone: Central Standard Time (PST +2)</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Distance: 1,750 miles</p>" 
+)
+
+my_map <- addMarkers(my_map, lng = -87.6727, lat = 42.0595, icon = NW_logo, popup = NW_popup, popupOptions = popupOptions(maxWidth = 400))
+
+
+
+
+##OSU
+
+OSU_logo <- makeIcon(iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Ohio_State_Buckeyes_logo.svg/2082px-Ohio_State_Buckeyes_logo.svg.png", iconWidth = 30, iconHeight = 30)
+
+OSU_popup <- paste0(
+  "<b>Ty Tucker Tennis Center - Columbus, OH</b><br>",
+  "<img src='https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,q_75,w_1200/v1/crm/columbus/Ty-Tucker-Tennis-Center-2_CC074A11-5056-BF65-D641FBC0A7DC768A-cc0748ca5056bf6_cc075028-5056-bf65-d6f6f11281c45123.jpg' width='400' height='267'><br>",
+  "<p style='text-align:center; font-size:14px; color:#333;'><i>Home of the Ohio State Buckeyes</i></p>", "<br>", "<p style='text-align:left; font-size:20px; color:#BB042B; font-style:normal;'>Travel Information</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Time Zone: Eastern Standard Time (PST +3)</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Distance: 2,000 miles</p>" 
+)
+
+my_map <- addMarkers(my_map, lng = -83.0247, lat = 40.0137, icon = OSU_logo, popup = OSU_popup, popupOptions = popupOptions(maxWidth = 400))
+
+
+
+
+##PSU
+
+PSU_logo <- makeIcon(iconUrl = "https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/Penn_State_Nittany_Lions_logo.svg/1200px-Penn_State_Nittany_Lions_logo.svg.png", iconWidth = 38, iconHeight = 28)
+
+PSU_popup <- paste0(
+  "<b>Sarni Tennis Center - University Park, PA</b><br>",
+  "<img src='https://lh3.googleusercontent.com/p/AF1QipOwL6eLln1fmPJ_2qSFls_4yvnEuitEda9kz5yu=s1360-w1360-h1020' width='400' height='267'><br>",
+  "<p style='text-align:center; font-size:14px; color:#333;'><i>Home of the Penn State Nittany Lions</i></p>","<br>", "<p style='text-align:left; font-size:20px; color:#001E44; font-style:normal;'>Travel Information</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Time Zone: Eastern Time Zone (PST +3)</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Distance: 2,100 miles</p>"
+)
+
+
+my_map <- addMarkers(my_map, lng = -77.8591, lat = 40.8040, icon = PSU_logo, popup = PSU_popup, popupOptions = popupOptions(maxWidth = 400))
+
+
+
+
+##Wisconsin
+
+Wisconsin_logo <- makeIcon(iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Wisconsin_Badgers_logo.svg/1086px-Wisconsin_Badgers_logo.svg.png", iconWidth = 30, iconHeight = 30)
+
+Wisconsin_popup <- paste0(
+  "<b>Nielsen Tennis Stadium - Madison, WI</b><br>",
+  "<img src='https://uwbadgers.com/common/controls/image_handler.aspx?thumb_id=0&image_path=/images/2019/7/9/nielsen_feature_photo.jpg' width='400' height='267'><br>",
+  "<p style='text-align:center; font-size:14px; color:#333;'><i>Home of the Wisconsin Badgers</i></p>", "<br>", "<p style='text-align:left; font-size:20px; color:#C5050C; font-style:normal;'>Travel Information</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Time Zone: Central Standard Time (PST +2)</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Distance: 1,750 miles</p>"
+)
+
+my_map <- addMarkers(my_map, lng = -89.4303, lat = 43.0796, icon = Wisconsin_logo, popup = Wisconsin_popup, popupOptions = popupOptions(maxWidth = 400))
+
+
+
+
+##Nebraska
+
+Nebraska_logo <- makeIcon(iconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Nebraska_Cornhuskers_logo.svg/1200px-Nebraska_Cornhuskers_logo.svg.png", iconWidth = 30, iconHeight = 30)
+
+Nebraska_popup <- paste0(
+  "<b>Sid and Hazel Dillon Tennis Center - Lincoln, NE</b><br>",
+  "<img src='https://huskers.com/imgproxy/U-WaKz3KMA8cdgNHYliD0_hZ8pUSpMK_cuBftO6WVZk/rs:fit:1980:0:0/g:ce/q:90/aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL2h1c2tlcnMtY29tLXByb2QvMjAyMy8wOS8xMi9iZ3lZcFFjQUNkMHJSNEgyVldzYVFJRmhvQ0tFc281WDhoeGVQMmdBLmpwZw.jpg' width='400' height='267'><br>",
+  "<p style='text-align:center; font-size:14px; color:#333;'><i>Home of the Nebraska Cornhuskers</i></p>",  "<br>", "<p style='text-align:left; font-size:20px; color:#DD0000; font-style:normal;'>Travel Information</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Time Zone: Central Standard Time (PST +2)</p>", "<p style='text-align:left; font-size:14px; color:#333; font-style:normal;'>Distance: 1,300 miles</p>"
+)
+
+my_map <- addMarkers(my_map, lng = -96.6859, lat = 40.8365, icon = Nebraska_logo, popup = Nebraska_popup, popupOptions = popupOptions(maxWidth = 400))
+
+
+
+
+my_map
+
+
+
+
+```
