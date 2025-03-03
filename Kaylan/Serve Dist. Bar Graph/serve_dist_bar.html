@@ -19,7 +19,7 @@
     <svg width="1000" height="300"></svg>
     <script>
         d3.json("serve_dist_bar2.json").then(function(data) {
-
+    
             const zones = ["Wide", "Body", "T"];
             const formattedData = {
                 "First Ad": { "Wide": 0, "Body": 0, "T": 0, "Count": 0 },
@@ -27,67 +27,67 @@
                 "First Deuce": { "Wide": 0, "Body": 0, "T": 0, "Count": 0 },
                 "Second Deuce": { "Wide": 0, "Body": 0, "T": 0, "Count": 0 },
             };
-
+    
             data.forEach(d => {
                 const zone = d.Zone.split(" ");
                 const side = zone[0];
                 const position = zone[1];
                 const type = d.Serve;
                 const count = d.Count;
-
+    
                 const combined = type + " " + side;
-                console.log(combined);
                 formattedData[combined][position] = parseFloat(d.Percentage);
-                
                 formattedData[combined]["Count"] += parseInt(d.Count);
             });
-
+    
+            // Reordered stackData
             const stackData = [
-                { "side": "First Ad", "Wide": formattedData['First Ad'].Wide, "Body": formattedData['First Ad'].Body, "T": formattedData['First Ad'].T, "Count":formattedData['First Ad'].Count },
-                { "side": "Second Ad", "Wide": formattedData['Second Ad'].Wide, "Body": formattedData['Second Ad'].Body, "T": formattedData['Second Ad'].T, "Count":formattedData['Second Ad'].Count  },
-                { "side": "First Deuce", "Wide": formattedData['First Deuce'].Wide, "Body": formattedData['First Deuce'].Body, "T": formattedData['First Deuce'].T, "Count":formattedData['First Deuce'].Count  },
-                { "side": "Second Deuce", "Wide": formattedData['Second Deuce'].Wide, "Body": formattedData['Second Deuce'].Body, "T": formattedData['Second Deuce'].T, "Count":formattedData['Second Deuce'].Count  }
+                { "side": "First Deuce", "Wide": formattedData['First Deuce'].Wide, "Body": formattedData['First Deuce'].Body, "T": formattedData['First Deuce'].T, "Count": formattedData['First Deuce'].Count },
+                { "side": "Second Deuce", "Wide": formattedData['Second Deuce'].Wide, "Body": formattedData['Second Deuce'].Body, "T": formattedData['Second Deuce'].T, "Count": formattedData['Second Deuce'].Count },
+                { "side": "First Ad", "Wide": formattedData['First Ad'].Wide, "Body": formattedData['First Ad'].Body, "T": formattedData['First Ad'].T, "Count": formattedData['First Ad'].Count },
+                { "side": "Second Ad", "Wide": formattedData['Second Ad'].Wide, "Body": formattedData['Second Ad'].Body, "T": formattedData['Second Ad'].T, "Count": formattedData['Second Ad'].Count }
             ];
-
+    
             console.log(formattedData);
             console.log(stackData);
-
+    
             const width = 1000, height = 300;
             const svg = d3.select("svg").attr("width", width).attr("height", height);
-
+    
+            // Updated order for x-axis
             const x = d3.scaleBand()
-                .domain(["First Ad","Second Ad","First Deuce","Second Deuce"])
+                .domain(["First Deuce", "Second Deuce", "First Ad", "Second Ad"])
                 .range([50, width - 50])
-                .padding(0.2);
-
+                .padding(0.4);
+    
             const y = d3.scaleLinear()
                 .domain([0, 100])
-                .range([height - 50, 50]);
-
+                .range([height - 50, 60]);
+    
             const color = d3.scaleOrdinal()
                 .domain(zones)
                 .range(["#002b46", "#005586", "#3a92d6"]);
-                
+    
             svg.append("g")
                 .attr("transform", `translate(0, ${height - 50})`)
                 .call(d3.axisBottom(x))
                 .selectAll("text")
                 .style("font-family", "'DM Sans', sans-serif")
                 .style("font-size", "14px");
-
+    
             const stack = d3.stack()
                 .keys(zones)
                 .order(d3.stackOrderNone)
                 .offset(d3.stackOffsetNone);
-
+    
             const series = stack(stackData);
-
+    
             const groups = svg.selectAll("g.layer")
                 .data(series)
                 .enter().append("g")
                 .classed("layer", true)
                 .attr("fill", d => color(d.key));
-
+    
             groups.selectAll("rect")
                 .data(d => d)
                 .enter().append("rect")
@@ -99,14 +99,14 @@
                 .attr("stroke-width", "2")
                 .attr("rx", 5)
                 .attr("ry", 5);
-
+    
             const textGroup = groups.selectAll("g.text-group")
                 .data(d => d)
                 .enter().append("g")
                 .attr("class", "text-group")
                 .attr("transform", d => `translate(${x(d.data.side) + x.bandwidth() / 2}, ${(y(d[0]) + y(d[1])) / 2 + 2.5})`)
                 .attr("dy", "0.35em");
-
+    
             textGroup.append("text")
                 .attr("x", -25)
                 .attr("text-anchor", "middle")
@@ -117,7 +117,7 @@
                     const zoneIndex = series.findIndex(s => s[i] === d);
                     return zones[zoneIndex];
                 });
-
+    
             textGroup.append("text")
                 .attr("x", 32.5)
                 .attr("text-anchor", "middle")
@@ -125,18 +125,19 @@
                 .style("fill", "white")
                 .style("font-weight", "700")
                 .text(d => `${(d[1] - d[0]).toFixed(0)}%`);
+    
             svg.selectAll(".stack-label")
                 .data(stackData)
                 .enter().append("text")
                 .attr("class", "stack-label")
-                .attr("x", d => x(d.side) + x.bandwidth() / 2)  // Center the text
-                .attr("y", d => y(d3.sum(zones.map(zone => d[zone]))) - 5)  // Position above the top of the stack
+                .attr("x", d => x(d.side) + x.bandwidth() / 2)
+                .attr("y", d => y(d3.sum(zones.map(zone => d[zone]))) - 5)
                 .attr("text-anchor", "middle")
-                .style("fill", "black")  // Change to white if needed
+                .style("fill", "black")
                 .style("font-size", "14px")
                 .style("font-weight", "700")
-                .text(d => `Count: ${d.Count}`);  // Display the count value
-
+                .text(d => `Count: ${d.Count}`);
+    
             svg.append("text")
                 .attr("class", "title")
                 .attr("x", width / 2)
@@ -145,8 +146,7 @@
                 .style("font-size", "16px")
                 .style("font-weight", "700")
                 .text("Serve Distribution - " + data[0].Server);
-
-
+    
         });
     </script>
 </body>
