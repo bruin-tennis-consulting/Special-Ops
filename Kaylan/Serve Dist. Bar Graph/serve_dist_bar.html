@@ -22,10 +22,10 @@
 
             const zones = ["Wide", "Body", "T"];
             const formattedData = {
-                "First Ad": { "Wide": 0, "Body": 0, "T": 0, "Count": 0 },
-                "Second Ad": { "Wide": 0, "Body": 0, "T": 0, "Count": 0 },
-                "First Deuce": { "Wide": 0, "Body": 0, "T": 0, "Count": 0 },
-                "Second Deuce": { "Wide": 0, "Body": 0, "T": 0, "Count": 0 },
+                "First Ad": { "Wide": 0, "Body": 0, "T": 0, "Count": []},
+                "Second Ad": { "Wide": 0, "Body": 0, "T": 0, "Count": []},
+                "First Deuce": { "Wide": 0, "Body": 0, "T": 0, "Count": []},
+                "Second Deuce": { "Wide": 0, "Body": 0, "T": 0, "Count": []},
             };
 
             data.forEach(d => {
@@ -39,8 +39,15 @@
                 console.log(combined);
                 formattedData[combined][position] = parseFloat(d.Percentage);
                 
-                formattedData[combined]["Count"] += parseInt(d.Count);
+                formattedData[combined]["Count"].push(parseInt(d.Count));
+                //formattedData[combined]["Count"][-1] += parseInt(d.Count);
             });
+            
+            for(const key in formattedData){
+                let cArr = formattedData[key]["Count"];
+                let sum = cArr.reduce((acc, val) => acc + val, 0);
+                cArr.push(sum);
+            }
 
             const stackData = [
                 { "side": "First Ad", "Wide": formattedData['First Ad'].Wide, "Body": formattedData['First Ad'].Body, "T": formattedData['First Ad'].T, "Count":formattedData['First Ad'].Count },
@@ -81,6 +88,7 @@
                 .offset(d3.stackOffsetNone);
 
             const series = stack(stackData);
+            console.log(series);
 
             const groups = svg.selectAll("g.layer")
                 .data(series)
@@ -124,18 +132,31 @@
                 .attr("transform", "translate(0, 1.25)")
                 .style("fill", "white")
                 .style("font-weight", "700")
-                .text(d => `${(d[1] - d[0]).toFixed(0)}%`);
+                .text((d,i) =>{
+                    const p = (d[1] - d[0]).toFixed(0);
+
+                    const z = series.findIndex(s => s[i] == d);
+                    const zN = zones[z];
+
+                    const cArr = formattedData[d.data.side]["Count"];
+                    const cVal = cArr[z] ?? 0;
+
+                    return `${p}% (${cVal})`;
+
+                });
+                //.text(d => `${(d[1] - d[0]).toFixed(0)}%`);
+                
             svg.selectAll(".stack-label")
                 .data(stackData)
                 .enter().append("text")
                 .attr("class", "stack-label")
-                .attr("x", d => x(d.side) + x.bandwidth() / 2)  // Center the text
-                .attr("y", d => y(d3.sum(zones.map(zone => d[zone]))) - 5)  // Position above the top of the stack
+                .attr("x", d => x(d.side) + x.bandwidth() / 2) 
+                .attr("y", d => y(d3.sum(zones.map(zone => d[zone]))) - 5)  
                 .attr("text-anchor", "middle")
-                .style("fill", "black")  // Change to white if needed
+                .style("fill", "black")  
                 .style("font-size", "14px")
                 .style("font-weight", "700")
-                .text(d => `Count: ${d.Count}`);  // Display the count value
+                .text(d => `Count: ${d.Count.slice(-1)}`);  
 
             svg.append("text")
                 .attr("class", "title")
