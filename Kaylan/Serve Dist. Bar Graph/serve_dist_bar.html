@@ -16,9 +16,9 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
-    <svg width="1000" height="300"></svg>
+    <svg width="1000" height="400"></svg>
     <script>
-        d3.json("serve_dist_bar2.json").then(function(data) {
+        d3.json("serve_dist_barPepperdine.json").then(function(data) {
 
             const zones = ["Wide", "Body", "T"];
             const formattedData = {
@@ -36,7 +36,7 @@
                 const count = d.Count;
 
                 const combined = type + " " + side;
-                console.log(combined);
+                //console.log(combined);
                 formattedData[combined][position] = parseFloat(d.Percentage);
                 
                 formattedData[combined]["Count"].push(parseInt(d.Count));
@@ -48,6 +48,7 @@
                 let sum = cArr.reduce((acc, val) => acc + val, 0);
                 cArr.push(sum);
             }
+            //console.log(formattedData);
 
             const stackData = [
                 { "side": "First Ad", "Wide": formattedData['First Ad'].Wide, "Body": formattedData['First Ad'].Body, "T": formattedData['First Ad'].T, "Count":formattedData['First Ad'].Count },
@@ -59,7 +60,7 @@
             console.log(formattedData);
             console.log(stackData);
 
-            const width = 1000, height = 300;
+            const width = 1000, height = 400;
             const svg = d3.select("svg").attr("width", width).attr("height", height);
 
             const x = d3.scaleBand()
@@ -123,7 +124,9 @@
                 .style("font-weight", "400")
                 .text((d, i, nodes) => {
                     const zoneIndex = series.findIndex(s => s[i] === d);
-                    return zones[zoneIndex];
+                    const zoneName = zones[zoneIndex];
+                    const value = d[1] - d[0];
+                    return value > 0 ? zones[zoneIndex] : "";
                 });
 
             textGroup.append("text")
@@ -141,7 +144,7 @@
                     const cArr = formattedData[d.data.side]["Count"];
                     const cVal = cArr[z] ?? 0;
 
-                    return `${p}% (${cVal})`;
+                    return cVal > 0 ? `${p}% (${cVal})` : "";
 
                 });
                 //.text(d => `${(d[1] - d[0]).toFixed(0)}%`);
