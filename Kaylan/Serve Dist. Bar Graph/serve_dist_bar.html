@@ -19,6 +19,7 @@
     <svg width="1000" height="400"></svg>
     <script>
         d3.json("serve_dist_barPepperdine.json").then(function(data) {
+            //Need to add comments?
 
             const zones = ["Wide", "Body", "T"];
             const formattedData = {
@@ -57,8 +58,8 @@
                 { "side": "Second Deuce", "Wide": formattedData['Second Deuce'].Wide, "Body": formattedData['Second Deuce'].Body, "T": formattedData['Second Deuce'].T, "Count":formattedData['Second Deuce'].Count  }
             ];
 
-            console.log(formattedData);
-            console.log(stackData);
+            //console.log(formattedData);
+            //console.log(stackData);
 
             const width = 1000, height = 400;
             const svg = d3.select("svg").attr("width", width).attr("height", height);
